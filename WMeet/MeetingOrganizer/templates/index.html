@@ -1,0 +1,168 @@
+{% extends "layout-index.html" %}{}
+{% block title %}{% endblock %}
+{% load static %}
+{% block body %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <script> alert("{{ message }}");</script>
+            {% endfor %}
+        </ul>
+    {% endif %}
+     <div id="home" class="header-hero bg_cover d-lg-flex align-items-center" style="background-image: url({% static 'images/header-hero.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="header-hero-content">
+                            <h1 class="hero-title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"><b>Your Meeting Organizer</b> <span> WMEET</span>, <b>gathers people together for you</b></h1>
+                            <div class="header-singup wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s"></div>
+                        </div> <!-- header hero content -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-hero-image d-flex align-items-center wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="1.1s">
+                <div class="image">
+                    <img src='{% static "images/meetsocial.png" %}' alt="Hero Image">
+                </div>
+            </div> <!-- header hero image -->
+        </div> <!-- header hero -->
+    <!--====== HEADER PART ENDS ======-->
+    
+    <!--====== ABOUT PART START ======-->
+    
+    <section id="about" class="about-area pt-115">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="about-title text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <h6 class="welcome">WMEET</h6>
+                        <h3 class="title"><span> The easiest way for creating meetings. </span> 
+                            We provide multiple communication channels support.</h3>
+                    </div>
+                </div>
+            </div> <!-- row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="about-image mt-60 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <img src='{% static "images/communication.jpg" %}' alt="about" >
+                    </div> <!-- about image -->
+                </div>
+            </div> <!-- row -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="about-content pt-45">
+                        <p class="text wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">For example your attendee may not have Email, so we send the notification to phone if exists. 
+                            Otherwise we try other communication channels to reach him/her. 
+                            For example if he/she has Telegram account we send notification from there.
+                            There are multiple solutions that we found and we have smart algorithm the manage this proceess.
+                        </p>
+                    </div> <!-- about content -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== ABOUT PART ENDS ======-->
+    
+    <!--====== OUR SERVICE PART START ======-->
+    <section id="services" class="our-services-area pt-115">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-9">
+                    <div class="section-title text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <h6 class="sub-title">What we offer ?</h6>
+                        <h4 class="title">Bunch of Services <span>to Rock Your Business</span></h4>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="our-services-tab pt-30">
+                        <ul class="nav justify-content-center wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="active" id="business-tab" data-toggle="tab" href="#business" role="tab" aria-controls="business" aria-selected="true">
+                                    <i class="lni-briefcase"></i> <span> From File <br> csv, txt, etc.</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="digital-tab" data-toggle="tab" href="#digital" role="tab" aria-controls="digital" aria-selected="false">
+                                    <i class="lni-bullhorn"></i> <span> By Hand <br> Adding </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="false">
+                                    <i class="lni-stats-up"></i> <span> Multiple Channel Communication <br> Without Membership Responses</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="business" role="tabpanel" aria-labelledby="business-tab">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-6">
+                                        <div class="our-services-content mt-45">
+                                            <h3 class="services-title"> Add attendees from file easily. </h3>
+                                            <p class="text"> Upload file in requested format. Then send notification to all people.
+                                                Wait for their response ATTENDING or NOT. Create available time space for response.
+                                                </p>
+                                        </div> <!-- our services content -->
+                                    </div>
+                                </div> <!-- row -->
+                            </div>
+                            
+                            <div class="tab-pane fade" id="digital" role="tabpanel" aria-labelledby="digital-tab">
+                                <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                                <div class="our-services-content mt-45">
+                                                    <h3 class="services-title"> Add attendees by hand. </h3>
+                                                    <p class="text"> In this case you need to give informations of attendies. Then send notification to all of them.
+                                                        Wait for their response ATTENDING or NOT. Create available time space for response.
+                                                        </p>
+                                                </div> <!-- our services content -->
+                                        </div>
+                                </div> <!-- row -->
+                            </div>
+                            
+                            <div class="tab-pane fade" id="market" role="tabpanel" aria-labelledby="market-tab">
+                                    <div class="row justify-content-center">
+                                            <div class="col-lg-6">
+                                                    <div class="our-services-content mt-45">
+                                                        <h3 class="services-title"> Multiple Channel Communication Without Membership </h3>
+                                                        <p class="text"> People that you notified does not have to be member of our application. Attendence is checked by links. It is easy as one click.
+                                                         <br>
+                                                        Communication methodology is our Secret :). Try and see it. Don't panic. It is FREE.
+                                                        </p>
+                                                    </div> <!-- our services content -->
+                                            </div>
+                                    </div> <!-- row -->
+                            </div>
+                        </div> <!-- tab content -->
+                    </div> <!-- our services tab -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== OUR SERVICE PART ENDS ======-->
+    
+    <!--====== CONTACT PART START ======-->
+    <section id="contact" class="contact-area pt-120 pb-120">
+        <div class="container">
+            <div class="contact-info pt-30">
+            </div> <!-- contact info -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact-wrapper-form pt-115  wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <h4 class="contact-title pb-10"><i class="lni-envelope"></i> Leave <span>A Message.</span></h4>
+                        
+                        <form  action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% load crispy_forms_tags %}
+                            {% crispy form %}
+                        </form>
+                    </div> <!-- contact wrapper form -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    <!--====== CONTACT PART ENDS ======-->
+
+{% endblock %}
