@@ -25,6 +25,9 @@
         <link rel="stylesheet" href='{% static "css/default.css" %}'>
         <!--====== Style CSS ======-->
         <link rel="stylesheet" href='{% static "css/style.css" %}'>
+        <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+        <script type="text/javascript" src="{% static '/admin/js/core.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static '/admin/css/widgets.css' %}">
     </head>
     <body>
         <!--[if IE]>
@@ -67,6 +70,23 @@
 
                                 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                     <ul id="nav" class="navbar-nav m-auto">
+                                        {% if user.is_authenticated %}
+                                        <li class="nav-item">
+                                            <a >Welcome {{ user.username }}</a>
+                                        </li>
+                                         <li class="nav-item">
+                                            <a href="{% url 'MeetingOrganizer:events' %}">Events</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{% url 'MeetingOrganizer:create_event' %}">Create An Event</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href=""></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href=""></a>
+                                        </li>
+                                        {% else %}
                                         <li class="nav-item active">
                                             <a href="#home">Home</a>
                                         </li>
@@ -79,12 +99,17 @@
                                         <li class="nav-item">
                                             <a href="#contact">Contact Us</a>
                                         </li>
+                                        {% endif %}
                                     </ul>
                                 </div> <!-- navbar collapse -->
-
                                 <div class="navbar-btn d-none d-sm-inline-block">
-                                    <a class="main-btn"  href="#pricing">Login</a>
-                                    <a class="main-btn"  href="#pricing">Signup</a>
+                                    {% if user.is_authenticated %}
+                                    <a class="main-btn" href='{% url "MeetingOrganizer:change_password" %}'>Change Password</a>
+                                    <a class="main-btn"  href='{% url "MeetingOrganizer:logout" %}'>Logout</a>
+                                    {% else %}
+                                    <a class="main-btn"  href='{% url "MeetingOrganizer:login" %}'>Login</a>
+                                    <a class="main-btn"  href='{% url "MeetingOrganizer:signup" %}'>Signup</a>
+                                    {% endif %}
                                 </div>
                             </nav> <!-- navbar -->
                         </div>
@@ -96,13 +121,7 @@
 
         {% block body %}{% endblock %}
 
-        <footer id="footer" class="footer-area bg_cover" style='background-image: url({% static "images/footer-bg.jpg" %})'>
-            <div class="container">
-                <div class="footer-copyright text-center">
-                    <p class="text">© 2022 Crafted by <a href="https://uideck.com" rel="nofollow">UIdeck</a> All Rights Reserved.</p>
-                </div>
-            </div> <!-- container -->
-        </footer>
+
         <!--====== FOOTER PART ENDS ======-->
 
         <!--====== BACK TOP TOP PART START ======-->

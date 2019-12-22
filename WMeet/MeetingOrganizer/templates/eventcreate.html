@@ -1,0 +1,21 @@
+{% extends "layout-index.html" %}{}
+{% block title %}Create Event {% endblock %}
+{% load static %}
+{% block body %}
+        <div class="container">
+                <div class="contact-info pt-30">
+                </div> <!-- contact info -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="contact-wrapper-form pt-115  wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.5s">
+                            <h4 class="contact-title pb-10"><span> Create An Event </span></h4>
+                            <form  action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% load crispy_forms_tags %}
+                                {% crispy form %}
+                            </form>
+                        </div> <!-- contact wrapper form -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+{% endblock %}

@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.views.i18n import JavaScriptCatalog
+
 
 urlpatterns = [
     path('',include('MeetingOrganizer.urls')),
     path('admin/', admin.site.urls),
+    path('admin/jsi18n', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 ]

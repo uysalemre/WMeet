@@ -1,0 +1,114 @@
+{% extends "layout-index.html" %}{}
+{% block title %} Summary {% endblock %}
+{% load static %}
+{% block body %}
+<style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: center;
+  padding: 4px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+</style>
+        <div class="container">
+                <div class="contact-info pt-30">
+                </div> <!-- contact info -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="contact-wrapper-form pt-115  wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.5s">
+                            <h4 class="contact-title pb-10"><span> Summary </span></h4>
+                            <table style="overflow-x:auto;overflow-y:auto;">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Address
+                                </th>
+                                <th>
+                                    Start Time
+                                </th>
+                                 <th>
+                                     Total Number of Attendees
+                                </th>
+                                <th>
+                                     Number of Participators
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{event.eventname}}
+                                </td>
+                                <td>
+                                    {{event.place}}
+                                </td>
+                                <td>
+                                    {{event.event_start_date}} - {{event.event_start_time}}
+                                </td>
+                                <td>
+                                    {{attendees|length}}
+                                </td>
+                                <td>
+                                    {{numofparticipator}}
+                                </td>
+                            </tr>
+                        </table>
+                            <br><br>
+                            <table style="overflow-x:auto;overflow-y:auto;">
+                            <tr>
+                                <th>
+                                    Attendee Name
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Facebook Address
+                                </th>
+                                <th>
+                                    Notified
+                                </th>
+                                <th>
+                                    Attendance
+                                </th>
+
+                            </tr>
+                                {% for person in attendees %}
+                            <tr>
+                                <td>
+                                    {{person.name}}
+                                </td>
+                                <td>
+                                    {{person.email}}
+                                </td>
+                                <td>
+                                    {% if person.facebook_address %}
+                                        {{person.facebook_address}}
+                                    {% else %}
+                                       -
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{person.is_link_sended}}
+                                </td>
+                                <td>
+                                    {{person.is_participating}}
+                                </td>
+                            </tr>
+                                 {% endfor %}
+                        </table>
+                        </div> <!-- contact wrapper form -->
+                    </div>
+                </div> <!-- row -->
+            <br><br>
+            <a href="{% url 'MeetingOrganizer:sendnotifications' event_name=event.eventname pk=event.pk %}" class="main-btn">Send Notifications to Attendees</a>
+        </div> <!-- container -->
+{% endblock %}

@@ -1,5 +1,5 @@
 {% extends "layout-index.html" %}{}
-{% block title %}{% endblock %}
+{% block title %}Welcome {% endblock %}
 {% load static %}
 {% block body %}
     {% if messages %}
@@ -9,6 +9,7 @@
             {% endfor %}
         </ul>
     {% endif %}
+
      <div id="home" class="header-hero bg_cover d-lg-flex align-items-center" style="background-image: url({% static 'images/header-hero.jpg' %});">
             <div class="container">
                 <div class="row">
@@ -62,7 +63,6 @@
         </div> <!-- container -->
     </section>
     <!--====== ABOUT PART ENDS ======-->
-    
     <!--====== OUR SERVICE PART START ======-->
     <section id="services" class="our-services-area pt-115">
         <div class="container">
@@ -164,5 +164,4 @@
         </div> <!-- container -->
     </section>
     <!--====== CONTACT PART ENDS ======-->
-
 {% endblock %}

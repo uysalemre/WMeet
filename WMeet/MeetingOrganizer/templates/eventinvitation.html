@@ -1,0 +1,22 @@
+<html>
+{% autoescape off %}
+<body>
+<h4>Hi {{ attendee }},</h4>
+
+<p>{{ invitor }} invites you to join this event;</p>
+<ul>
+    <li>Event Name : {{ event.eventname }}</li>
+    <li>Address : {{ event.place }}</li>
+    <li>Time : {{ event.event_start_date }} - {{ event.event_start_time }}</li>
+</ul>
+
+<p>YES, I will join : http://{{ domain }}{% url 'MeetingOrganizer:attendance' event_pk=event_pk event_name=event_name user_pk=user_pk yesorno=statusyes %}</p>
+
+<p>NO, I won't join : http://{{ domain }}{% url 'MeetingOrganizer:attendance' event_pk=event_pk event_name=event_name user_pk=user_pk yesorno=statusno %}</p>
+
+
+<p><strong>** Don't forget these links will be expired at {{event.link_end_date}}-{{event.link_end_time}}. You can change your attention
+status until expiration time..</strong></p>
+</body>
+{% endautoescape %}
+</html>
