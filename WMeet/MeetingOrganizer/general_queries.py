@@ -67,27 +67,57 @@ class GeneralDbQueriesUsed:
 					)
 					person.is_link_sended = True
 				if person.facebook_address:
-					userid = person.facebook_address.rsplit('/', 1).pop()
-					users = self.client.searchForUsers(userid)
-					user = users[0]
-					print("User's ID: {}".format(user.uid))
-					print("User's name: {}".format(user.name))
-					print("User's profile picture URL: {}".format(user.photo))
-					print("User's main URL: {}".format(user.url))
-					self.client.send(Message(text=strip_tags(render_to_string("eventinvitation.html",
-															{'invitor': request.user.email,
-															 'attendee': person.name,
-															 'domain': get_current_site(request).domain,
-															 'event': event,
-															 'event_pk': urlsafe_base64_encode(force_bytes(event.pk)),
-															 'user_pk': urlsafe_base64_encode(force_bytes(person.pk)),
-															 'statusyes': urlsafe_base64_encode(force_bytes("yes")),
-															 'statusno': urlsafe_base64_encode(force_bytes("no")),
-															 'event_name':urlsafe_base64_encode(force_bytes(event.eventname)),
-															 }
-															)
-										   )),thread_id=user.uid,thread_type=ThreadType.USER)
-					person.is_link_sended = True
+					try:
+						if "profile.php?id=" in person.facebook_address:
+							user = person.facebook_address.rsplit('profile.php?id=', 1).pop()
+							self.client.send(Message(text=strip_tags(render_to_string("eventinvitation.html",
+																					  {'invitor': request.user.email,
+																					   'attendee': person.name,
+																					   'domain': get_current_site(
+																						   request).domain,
+																					   'event': event,
+																					   'event_pk': urlsafe_base64_encode(
+																						   force_bytes(event.pk)),
+																					   'user_pk': urlsafe_base64_encode(
+																						   force_bytes(person.pk)),
+																					   'statusyes': urlsafe_base64_encode(
+																						   force_bytes("yes")),
+																					   'statusno': urlsafe_base64_encode(
+																						   force_bytes("no")),
+																					   'event_name': urlsafe_base64_encode(
+																						   force_bytes(
+																							   event.eventname)),
+																					   }
+																					  )
+																	 )), thread_id=user,
+											 thread_type=ThreadType.USER)
+							print("me too")
+							person.is_link_sended = True
+						else:
+							userid = person.facebook_address.rsplit('/', 1).pop()
+							users = self.client.searchForUsers(userid)
+							print(users)
+							user = users[0]
+							print("User's ID: {}".format(user.uid))
+							print("User's name: {}".format(user.name))
+							print("User's profile picture URL: {}".format(user.photo))
+							print("User's main URL: {}".format(user.url))
+							self.client.send(Message(text=strip_tags(render_to_string("eventinvitation.html",
+																	{'invitor': request.user.email,
+																	 'attendee': person.name,
+																	 'domain': get_current_site(request).domain,
+																	 'event': event,
+																	 'event_pk': urlsafe_base64_encode(force_bytes(event.pk)),
+																	 'user_pk': urlsafe_base64_encode(force_bytes(person.pk)),
+																	 'statusyes': urlsafe_base64_encode(force_bytes("yes")),
+																	 'statusno': urlsafe_base64_encode(force_bytes("no")),
+																	 'event_name':urlsafe_base64_encode(force_bytes(event.eventname)),
+																	 }
+																	)
+												   )),thread_id=user.uid,thread_type=ThreadType.USER)
+						person.is_link_sended = True
+					except:
+						pass
 				person.save()
 			
 general_query = GeneralDbQueriesUsed()
