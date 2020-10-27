@@ -5,7 +5,7 @@ beautifulsoup4==4.8.1
 certifi==2019.11.28
 cffi==1.13.2
 chardet==3.0.4
-cryptography==2.8
+cryptography==3.2
 DictObject==1.1.1
 Django==2.2.8
 django-background-tasks==1.2.0
